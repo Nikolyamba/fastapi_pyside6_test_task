@@ -1,5 +1,4 @@
-from datetime import datetime
-
+from sqlalchemy.sql import func
 from sqlalchemy import Column, Integer, String, Date, Time
 
 from server.database.session import Base
@@ -8,6 +7,6 @@ class Message(Base):
     __tablename__ = "messages"
     id = Column(Integer(), primary_key=True, autoincrement=True)
     text = Column(String(150), unique=False, nullable=False)
-    date = Column(Date, nullable=False, default=datetime.utcnow().date)
-    time = Column(Time, nullable=False, default=datetime.utcnow().time)
+    date = Column(Date, nullable=False, default=func.current_date())
+    time = Column(Time, nullable=False, default=func.current_time())
     click_number = Column(Integer, nullable=False)

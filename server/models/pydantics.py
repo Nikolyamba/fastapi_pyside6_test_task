@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 from datetime import date, time
 
-
 class MessageCreate(BaseModel):
     text: str
     date: date
